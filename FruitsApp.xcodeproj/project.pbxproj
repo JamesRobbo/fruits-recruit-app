@@ -19,6 +19,7 @@
 		1A373C9D2B55C55E008C6279 /* FruitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A373C9C2B55C55E008C6279 /* FruitCollectionViewCell.xib */; };
 		1A373C9F2B55C965008C6279 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C9E2B55C965008C6279 /* ButtonCollectionViewCell.swift */; };
 		1A373CA12B55C973008C6279 /* ButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A373CA02B55C973008C6279 /* ButtonCollectionViewCell.xib */; };
+		1A373CA32B55D4D1008C6279 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373CA22B55D4D1008C6279 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1A373C9C2B55C55E008C6279 /* FruitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitCollectionViewCell.xib; sourceTree = "<group>"; };
 		1A373C9E2B55C965008C6279 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A373CA02B55C973008C6279 /* ButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		1A373CA22B55D4D1008C6279 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				1A373C802B55B0A2008C6279 /* FruitsViewController.swift */,
 				1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */,
 				1A373C872B55B2F6008C6279 /* NetworkClient.swift */,
+				1A373CA22B55D4D1008C6279 /* BaseViewController.swift */,
 			);
 			path = FruitsApp;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				1A373C882B55B2F6008C6279 /* NetworkClient.swift in Sources */,
 				1A373C812B55B0A2008C6279 /* FruitsViewController.swift in Sources */,
 				1A373C862B55B28C008C6279 /* Fruits.swift in Sources */,
+				1A373CA32B55D4D1008C6279 /* BaseViewController.swift in Sources */,
 				1A373C9F2B55C965008C6279 /* ButtonCollectionViewCell.swift in Sources */,
 				1A373C832B55B0EE008C6279 /* FruitsViewModel.swift in Sources */,
 			);

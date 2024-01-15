@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FruitsViewController: UIViewController {
+class FruitsViewController: BaseViewController {
     
     private let viewModel: FruitsViewModel
     
@@ -19,7 +19,7 @@ class FruitsViewController: UIViewController {
     
     init(viewModel: FruitsViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -27,11 +27,11 @@ class FruitsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         self.viewModel.update = self.updateState
         self.viewModel.setup()
         self.setupCollectionView()
         self.view.backgroundColor = .white
+        super.viewDidLoad()
     }
     
     private func updateState(new: FruitsViewModel.FruitsState) {

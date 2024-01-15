@@ -14,7 +14,7 @@ struct Fruits: Codable {
 struct Fruit: Codable {
     // e.g apple
     let type: String
-    // seems to be int
+    // in pence
     let price: Int
     // in g
     let weight: Int
