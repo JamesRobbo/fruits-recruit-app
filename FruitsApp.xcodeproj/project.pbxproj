@@ -13,6 +13,7 @@
 		1A373C812B55B0A2008C6279 /* FruitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C802B55B0A2008C6279 /* FruitsViewController.swift */; };
 		1A373C832B55B0EE008C6279 /* FruitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */; };
 		1A373C862B55B28C008C6279 /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C852B55B28C008C6279 /* Fruits.swift */; };
+		1A373C882B55B2F6008C6279 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C872B55B2F6008C6279 /* NetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1A373C802B55B0A2008C6279 /* FruitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewController.swift; sourceTree = "<group>"; };
 		1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewModel.swift; sourceTree = "<group>"; };
 		1A373C852B55B28C008C6279 /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
+		1A373C872B55B2F6008C6279 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1A373C7A2B55AEB3008C6279 /* Info.plist */,
 				1A373C802B55B0A2008C6279 /* FruitsViewController.swift */,
 				1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */,
+				1A373C872B55B2F6008C6279 /* NetworkClient.swift */,
 			);
 			path = FruitsApp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A373C6D2B55AEB2008C6279 /* AppDelegate.swift in Sources */,
+				1A373C882B55B2F6008C6279 /* NetworkClient.swift in Sources */,
 				1A373C812B55B0A2008C6279 /* FruitsViewController.swift in Sources */,
 				1A373C862B55B28C008C6279 /* Fruits.swift in Sources */,
 				1A373C832B55B0EE008C6279 /* FruitsViewModel.swift in Sources */,
