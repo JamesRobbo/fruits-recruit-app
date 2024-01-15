@@ -40,6 +40,8 @@ class FruitsViewController: UIViewController {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
+        case .layoutChange:
+            self.collectionView.collectionViewLayout = self.createLayout()
         case .error(let message):
             break
         }
@@ -55,10 +57,49 @@ class FruitsViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.register(UINib(nibName: "FruitCollectionViewCell", bundle: nil),
                                      forCellWithReuseIdentifier: "Fruit")
+        self.collectionView.register(UINib(nibName: "ButtonCollectionViewCell", bundle: nil),
+                                     forCellWithReuseIdentifier: "Button")
     }
     
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+        let layout = UICollectionViewCompositionalLayout { section, _ in
+            let section = self.viewModel.sections[section]
+            switch section {
+            case .button:
+                return self.buttonLayout()
+            case .fruits:
+                return self.fruitsLayout()
+            }
+        }
+        
+        return layout
+    }
+    
+    private func buttonLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(50))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(50))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    private func fruitsLayout() -> NSCollectionLayoutSection {
+        switch self.viewModel.layout {
+        case .grid:
+            return self.defaultLayout()
+        case .list:
+            return self.defaultLayout(isGrid: false)
+        case .carousel:
+            return self.carouselLayout()
+        }
+    }
+    
+    private func defaultLayout(isGrid: Bool = true) -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(isGrid ? 0.5 : 1),
                                               heightDimension: .estimated(100))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -69,24 +110,56 @@ class FruitsViewController: UIViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return section
+    }
+    
+    private func carouselLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .estimated(100))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .estimated(100))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+                                                     subitems: [item])
+        group.interItemSpacing = .fixed(10)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
+        return section
     }
 }
 
 extension FruitsViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        self.viewModel.sections.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.fruits.count
+        switch self.viewModel.sections[section] {
+        case .button:
+            return 1
+        case .fruits:
+            return self.viewModel.fruits.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Fruit", for: indexPath)
-        if let cell = cell as? FruitCollectionViewCell {
-            cell.setup(name: self.viewModel.fruits[indexPath.row].type,
-                       colour: .red)
+        switch self.viewModel.sections[indexPath.section] {
+        case .button(let title, let method):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Button", for: indexPath)
+            if let cell = cell as? ButtonCollectionViewCell {
+                cell.setup(title: title, method: method)
+            }
+            return cell
+        case .fruits:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Fruit", for: indexPath)
+            if let cell = cell as? FruitCollectionViewCell {
+                cell.setup(name: self.viewModel.fruits[indexPath.row].type,
+                           colour: .red)
+            }
+            return cell
         }
-        return cell
     }
 }
 
