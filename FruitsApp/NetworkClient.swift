@@ -49,8 +49,11 @@ class NetworkClient {
                                           path: String,
                                           params: [URLQueryItem] = []) async throws -> T {
         do {
+            let startTime = DispatchTime.now()
             let url = try self.buildURL(path: path, params: params)
             let (data, _) = try await self.sessionDefault.data(from: url)
+            let endTime = DispatchTime.now()
+            self.recordLoad(start: startTime, end: endTime)
             let decoded = try JSONDecoder().decode(model.self, from: data)
             return decoded
         } catch {
@@ -70,5 +73,13 @@ class NetworkClient {
         }
         
         return url
+    }
+    
+    private func recordLoad(start: DispatchTime, end: DispatchTime) {
+        Task { [weak self] in
+            let elapsedTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+            let elapsedTimeInMilliSeconds = Double(elapsedTime) / 1_000_000.0
+            try? await self?.recordUsage(event: "load", data: "\(elapsedTimeInMilliSeconds)")
+        }
     }
 }
