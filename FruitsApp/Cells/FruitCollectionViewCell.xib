@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Oc7-uw-MEW" customClass="FruitCollectionViewCell" customModule="FruitsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZU6-97-FHM">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="95"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFY-ef-Mid">
+                        <rect key="frame" x="0.0" y="0.0" width="173" height="95"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppF-Aj-N89">
+                                <rect key="frame" x="10" y="10" width="153" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ppF-Aj-N89" secondAttribute="bottom" constant="10" id="P6q-aT-820"/>
+                            <constraint firstItem="ppF-Aj-N89" firstAttribute="leading" secondItem="SFY-ef-Mid" secondAttribute="leading" constant="10" id="dbh-oY-zny"/>
+                            <constraint firstAttribute="trailing" secondItem="ppF-Aj-N89" secondAttribute="trailing" constant="10" id="fg8-06-CzW"/>
+                            <constraint firstItem="ppF-Aj-N89" firstAttribute="top" secondItem="SFY-ef-Mid" secondAttribute="top" constant="10" id="zle-jk-zm6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="SFY-ef-Mid" secondAttribute="bottom" id="0Q5-Jh-rad"/>
+                    <constraint firstAttribute="trailing" secondItem="SFY-ef-Mid" secondAttribute="trailing" id="H31-r1-2RX"/>
+                    <constraint firstItem="SFY-ef-Mid" firstAttribute="leading" secondItem="ZU6-97-FHM" secondAttribute="leading" id="eQN-rS-M2y"/>
+                    <constraint firstItem="SFY-ef-Mid" firstAttribute="top" secondItem="ZU6-97-FHM" secondAttribute="top" id="i9K-1E-FZb"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="173" height="95"/>
+            <connections>
+                <outlet property="background" destination="SFY-ef-Mid" id="9ca-Eg-exh"/>
+                <outlet property="nameLabel" destination="ppF-Aj-N89" id="wAf-Fk-J2R"/>
+            </connections>
+            <point key="canvasLocation" x="322.90076335877859" y="9.5070422535211279"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
