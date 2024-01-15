@@ -32,24 +32,43 @@ class NetworkClient {
                                                  path: path)
     }
     
+    func recordUsage(event: String, data: String) async throws {
+        let path = "/fmtvp/recruit-test-data/master/stats"
+        let params = [URLQueryItem(name: "event", value: event),
+                      URLQueryItem(name: "data", value: data)]
+        do {
+            let url = try self.buildURL(path: path, params: params)
+            _ = try await self.sessionDefault.data(from: url)
+        } catch {
+            throw error
+        }
+    }
+    
+    @discardableResult
     func performNetworkCall<T: Decodable>(model: T.Type,
                                           path: String,
                                           params: [URLQueryItem] = []) async throws -> T {
         do {
-            var components = URLComponents()
-            components.scheme = "https"
-            components.host = self.host
-            components.path = path
-            components.queryItems = params
-            guard let url = components.url else {
-                throw NetworkError.invalidRequest
-            }
-            
+            let url = try self.buildURL(path: path, params: params)
             let (data, _) = try await self.sessionDefault.data(from: url)
             let decoded = try JSONDecoder().decode(model.self, from: data)
             return decoded
         } catch {
             throw error
         }
+    }
+    
+    private func buildURL(path: String,
+                          params: [URLQueryItem]) throws -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = self.host
+        components.path = path
+        components.queryItems = params
+        guard let url = components.url else {
+            throw NetworkError.invalidRequest
+        }
+        
+        return url
     }
 }
