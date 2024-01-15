@@ -12,6 +12,7 @@
 		1A373C792B55AEB3008C6279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A373C772B55AEB3008C6279 /* LaunchScreen.storyboard */; };
 		1A373C812B55B0A2008C6279 /* FruitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C802B55B0A2008C6279 /* FruitsViewController.swift */; };
 		1A373C832B55B0EE008C6279 /* FruitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */; };
+		1A373C862B55B28C008C6279 /* Fruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A373C852B55B28C008C6279 /* Fruits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1A373C7A2B55AEB3008C6279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A373C802B55B0A2008C6279 /* FruitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewController.swift; sourceTree = "<group>"; };
 		1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitsViewModel.swift; sourceTree = "<group>"; };
+		1A373C852B55B28C008C6279 /* Fruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		1A373C6B2B55AEB2008C6279 /* FruitsApp */ = {
 			isa = PBXGroup;
 			children = (
+				1A373C842B55B282008C6279 /* Models */,
 				1A373C6C2B55AEB2008C6279 /* AppDelegate.swift */,
 				1A373C752B55AEB3008C6279 /* Assets.xcassets */,
 				1A373C772B55AEB3008C6279 /* LaunchScreen.storyboard */,
@@ -62,6 +65,14 @@
 				1A373C822B55B0EE008C6279 /* FruitsViewModel.swift */,
 			);
 			path = FruitsApp;
+			sourceTree = "<group>";
+		};
+		1A373C842B55B282008C6279 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A373C852B55B28C008C6279 /* Fruits.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			files = (
 				1A373C6D2B55AEB2008C6279 /* AppDelegate.swift in Sources */,
 				1A373C812B55B0A2008C6279 /* FruitsViewController.swift in Sources */,
+				1A373C862B55B28C008C6279 /* Fruits.swift in Sources */,
 				1A373C832B55B0EE008C6279 /* FruitsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
