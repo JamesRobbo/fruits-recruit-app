@@ -22,7 +22,18 @@ class FruitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel.update = self.updateState
+        self.viewModel.setup()
         self.view.backgroundColor = .red
+    }
+    
+    private func updateState(new: FruitsViewModel.FruitsState) {
+        switch new {
+        case .loaded:
+            break
+        case .error(let message):
+            break
+        }
     }
     
     private func setupCollectionView() {
