@@ -64,6 +64,7 @@ class NetworkClient {
             let decoded = try JSONDecoder().decode(model.self, from: data)
             return decoded
         } catch {
+            self.recordError(error)
             throw error
         }
     }
@@ -89,6 +90,12 @@ class NetworkClient {
             let elapsedTime = end.uptimeNanoseconds - start.uptimeNanoseconds
             let elapsedTimeInMilliSeconds = Double(elapsedTime) / 1000000.0
             try? await self?.recordUsage(event: "load", data: "\(elapsedTimeInMilliSeconds)")
+        }
+    }
+    
+    private func recordError(_ error: Error) {
+        Task { [weak self] in
+            try? await self?.recordUsage(event: "error", data: error.localizedDescription)
         }
     }
 }
