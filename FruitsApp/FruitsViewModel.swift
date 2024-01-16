@@ -12,6 +12,7 @@ class FruitsViewModel {
     enum FruitsState {
         case loaded
         case layoutChange
+        case changeMode
     }
     
     enum CollectionSection {
@@ -59,7 +60,8 @@ class FruitsViewModel {
                 self.fruits = response.fruit
                 self.sections = [.fruits,
                                  .button("Change layout", self.changeLayout),
-                                 .button("Reload", self.setup)]
+                                 .button("Reload", self.setup),
+                                 .button("Change mode", self.changeMode)]
                 self.update?(.loaded)
             } catch {
                 try? await self.networkClient.recordUsage(event: "error", data: "Fruits download failed")
@@ -70,5 +72,9 @@ class FruitsViewModel {
     private func changeLayout() {
         self.layout = self.layout.next
         self.update?(.layoutChange)
+    }
+    
+    private func changeMode() {
+        self.update?(.changeMode)
     }
 }

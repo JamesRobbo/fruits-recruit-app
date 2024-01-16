@@ -30,7 +30,7 @@ class FruitsViewController: BaseViewController {
         self.viewModel.update = self.updateState
         self.viewModel.setup()
         self.setupCollectionView()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .mainView
         super.viewDidLoad()
     }
     
@@ -43,6 +43,13 @@ class FruitsViewController: BaseViewController {
         case .layoutChange:
             self.collectionView.collectionViewLayout = self.createLayout()
             self.updateState(new: .loaded)
+        case .changeMode:
+            let window = self.view.window
+            if window?.overrideUserInterfaceStyle == .dark {
+                window?.overrideUserInterfaceStyle = .light
+            } else {
+                window?.overrideUserInterfaceStyle = .dark
+            }
         }
     }
     
@@ -55,6 +62,7 @@ class FruitsViewController: BaseViewController {
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.backgroundColor = .clear
         
         self.collectionView.register(UINib(nibName: "FruitCollectionViewCell", bundle: nil),
                                      forCellWithReuseIdentifier: "Fruit")
@@ -159,7 +167,7 @@ extension FruitsViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Fruit", for: indexPath)
             if let cell = cell as? FruitCollectionViewCell {
                 cell.setup(name: self.viewModel.fruits[indexPath.row].type,
-                           colour: .red)
+                           colour: .secondary)
             }
             return cell
         }

@@ -21,6 +21,11 @@ class ButtonCollectionViewCell: UICollectionViewCell {
     
     func setup(title: String, method: @escaping () -> Void) {
         self.button.setTitle(title, for: .normal)
+        self.button.tintColor = .buttonBackground
+        self.button.configuration?.baseForegroundColor = .text
+        self.button.layer.borderWidth = 1
+        self.button.layer.borderColor = UIColor.secondary.cgColor
+        self.button.layer.cornerRadius = 5
         self.method = method
     }
     
