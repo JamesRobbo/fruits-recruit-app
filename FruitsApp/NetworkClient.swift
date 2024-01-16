@@ -26,12 +26,14 @@ class NetworkClient {
         self.sessionDefault = URLSession(configuration: sessionConfiguration)
     }
     
+    // Downloads all fruits
     func downloadFruits() async throws -> Fruits {
         let path = "/fmtvp/recruit-test-data/master/data.json"
         return try await self.performNetworkCall(model: Fruits.self,
                                                  path: path)
     }
     
+    // Records usage e.g error or display
     func recordUsage(event: String, data: String) async throws {
         let path = "/fmtvp/recruit-test-data/master/stats"
         let params = [URLQueryItem(name: "event", value: event),
@@ -44,6 +46,10 @@ class NetworkClient {
         }
     }
     
+    /// - Parameters:
+    ///     - model: Model to be used to decode the data
+    ///     - path: Path for the network call after the host (eg ending in .com). Must start with a /
+    ///     - params: Params for the network call e.g event or data
     @discardableResult
     func performNetworkCall<T: Decodable>(model: T.Type,
                                           path: String,
@@ -61,6 +67,7 @@ class NetworkClient {
         }
     }
     
+    // Builds URL from path and params
     private func buildURL(path: String,
                           params: [URLQueryItem]) throws -> URL {
         var components = URLComponents()
@@ -75,6 +82,7 @@ class NetworkClient {
         return url
     }
     
+    // Records time taken for a network cal in ms and records usage with load event
     private func recordLoad(start: DispatchTime, end: DispatchTime) {
         Task { [weak self] in
             let elapsedTime = end.uptimeNanoseconds - start.uptimeNanoseconds

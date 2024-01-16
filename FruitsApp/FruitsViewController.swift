@@ -47,6 +47,7 @@ class FruitsViewController: BaseViewController {
     }
     
     private func setupCollectionView() {
+        // Adds collection view and fills superview with it
         self.view.addSubview(self.collectionView)
         self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
@@ -54,6 +55,7 @@ class FruitsViewController: BaseViewController {
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
         self.collectionView.register(UINib(nibName: "FruitCollectionViewCell", bundle: nil),
                                      forCellWithReuseIdentifier: "Fruit")
         self.collectionView.register(UINib(nibName: "ButtonCollectionViewCell", bundle: nil),
@@ -74,6 +76,7 @@ class FruitsViewController: BaseViewController {
         return layout
     }
     
+    // Button layout - just fills width and has estimated height
     private func buttonLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .estimated(50))
@@ -97,6 +100,7 @@ class FruitsViewController: BaseViewController {
         }
     }
     
+    // Default layout aka list or grid, use isGrid = true to make it a grid
     private func defaultLayout(isGrid: Bool = true) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(isGrid ? 0.5 : 1),
                                               heightDimension: .estimated(100))
@@ -112,6 +116,7 @@ class FruitsViewController: BaseViewController {
         return section
     }
     
+    // Carousel layout, swipe between fruits
     private func carouselLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .absolute(100))
