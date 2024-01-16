@@ -76,13 +76,13 @@ class FruitsViewController: BaseViewController {
         return layout
     }
     
-    // Button layout - just fills width and has estimated height
+    // Button layout
     private func buttonLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .estimated(50))
+                                              heightDimension: .absolute(64))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .estimated(50))
+                                               heightDimension: .absolute(64))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
                                                        subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
