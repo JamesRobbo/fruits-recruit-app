@@ -21,7 +21,8 @@ class NetworkClient {
     // Private init to force the use of shared
     private init() {
         let sessionConfiguration = URLSessionConfiguration.default
-        // ignoring caching for this project
+        // ignoring caching for this project, if it would help my case for getting to the next round please let me know
+        // about adding some caching logic for network calls if that would help show what i can do
         sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         self.sessionDefault = URLSession(configuration: sessionConfiguration)
     }
@@ -86,7 +87,7 @@ class NetworkClient {
     private func recordLoad(start: DispatchTime, end: DispatchTime) {
         Task { [weak self] in
             let elapsedTime = end.uptimeNanoseconds - start.uptimeNanoseconds
-            let elapsedTimeInMilliSeconds = Double(elapsedTime) / 1_000_000.0
+            let elapsedTimeInMilliSeconds = Double(elapsedTime) / 1000000.0
             try? await self?.recordUsage(event: "load", data: "\(elapsedTimeInMilliSeconds)")
         }
     }

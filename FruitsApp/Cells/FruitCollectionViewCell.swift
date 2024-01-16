@@ -16,6 +16,7 @@ class FruitCollectionViewCell: UICollectionViewCell {
                colour: UIColor) {
         self.background.layer.cornerRadius = 5
         self.background.backgroundColor = colour
-        self.nameLabel.text = name
+        self.nameLabel.text = name.uppercased()
+        self.nameLabel.textColor = .white
     }
 }
