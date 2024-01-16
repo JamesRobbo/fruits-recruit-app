@@ -17,5 +17,5 @@ struct Fruit: Codable {
     // in pence
     let price: Int
     // in g
-    let weight: Int
+    let weight: Double
 }

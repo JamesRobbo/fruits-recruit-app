@@ -164,5 +164,17 @@ extension FruitsViewController: UICollectionViewDataSource {
 }
 
 extension FruitsViewController: UICollectionViewDelegate {
-    // TODO: did select
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch self.viewModel.sections[indexPath.section] {
+        case .fruits:
+            let fruit = self.viewModel.fruits[indexPath.row]
+            DispatchQueue.main.async {
+                let viewController = FruitDetailViewController(fruit: fruit)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        default:
+            break
+        }
+    }
 }
