@@ -30,7 +30,8 @@ class FruitDetailViewController: UIViewController {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .currency
         numberFormatter.currencyCode = "GBP"
-        let price = numberFormatter.string(from: NSNumber(integerLiteral: self.fruit.price))
+        let priceInPounds = Double(self.fruit.price) / 100
+        let price = numberFormatter.string(from: NSNumber(floatLiteral: priceInPounds))
         let weightGrams = Measurement(value: self.fruit.weight, unit: UnitMass.grams)
         let weightKg = weightGrams.converted(to: .kilograms)
         self.priceLabel.text = price
