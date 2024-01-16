@@ -12,12 +12,15 @@
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rUl-4F-gx4" customClass="ButtonCollectionViewCell" customModule="FruitsApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="223" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O4F-GC-5Ab">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="O4F-GC-5Ab">
                 <rect key="frame" x="0.0" y="0.0" width="223" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-ze-ANV">
-                        <rect key="frame" x="20" y="10" width="183" height="46"/>
+                        <rect key="frame" x="20" y="10" width="183" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="wTv-ik-K5z"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled"/>
                         <connections>

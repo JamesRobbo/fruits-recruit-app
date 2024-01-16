@@ -42,6 +42,7 @@ class FruitsViewController: BaseViewController {
             }
         case .layoutChange:
             self.collectionView.collectionViewLayout = self.createLayout()
+            self.updateState(new: .loaded)
         case .error(let message):
             break
         }
@@ -77,11 +78,11 @@ class FruitsViewController: BaseViewController {
     
     private func buttonLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .absolute(50))
+                                              heightDimension: .estimated(50))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .absolute(50))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                               heightDimension: .estimated(50))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
                                                        subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         return section
@@ -115,13 +116,12 @@ class FruitsViewController: BaseViewController {
     
     private func carouselLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .estimated(100))
+                                              heightDimension: .absolute(100))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .estimated(100))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
-                                                     subitems: [item])
-        group.interItemSpacing = .fixed(10)
+                                               heightDimension: .absolute(140))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
         group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
