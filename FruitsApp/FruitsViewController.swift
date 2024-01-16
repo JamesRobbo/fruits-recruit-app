@@ -43,8 +43,6 @@ class FruitsViewController: BaseViewController {
         case .layoutChange:
             self.collectionView.collectionViewLayout = self.createLayout()
             self.updateState(new: .loaded)
-        case .error(let message):
-            break
         }
     }
     

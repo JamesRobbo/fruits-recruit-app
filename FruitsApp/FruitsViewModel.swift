@@ -12,7 +12,6 @@ class FruitsViewModel {
     enum FruitsState {
         case loaded
         case layoutChange
-        case error(String)
     }
     
     enum CollectionSection {
@@ -63,7 +62,7 @@ class FruitsViewModel {
                                  .button("Reload", self.setup)]
                 self.update?(.loaded)
             } catch {
-                self.update?(.error("Something went wrong"))
+                try? await self.networkClient.recordUsage(event: "error", data: "Fruits download failed")
             }
         }
     }
